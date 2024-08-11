@@ -1,6 +1,6 @@
 import React from 'react'
 import { SidebatData } from './SidebarData'
-import SidebarIcon from "./SiderbarIcon" 
+// import SidebarIcon from "./SiderbarIcon" 
 
 function Sidebar() {
   return (
