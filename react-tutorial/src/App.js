@@ -3,7 +3,7 @@ import Sidebar from './components/SiderBar/Sidebar';
 import Header from './components/HomePage/Header';
 import { useState } from 'react';
 import { Route,Routes,Link } from 'react-router-dom';
-import Home from './pages/Home';
+
 import Mail from './pages/Mail';
 
 function App() {
@@ -47,12 +47,12 @@ function App() {
 
   return (
     <div className="App">
-      <Sidebar/>
+      {/* <Sidebar/>
       <Routes>
         <Route path='/home' element={<Home/>}/>
         <Route path='/mail' element={<Mail/>}/>
-      </Routes>
-      {/* <Header/> */}
+      </Routes> */}
+      <Header/>
     </div>
   );
 }
