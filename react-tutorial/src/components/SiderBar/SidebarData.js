@@ -13,7 +13,7 @@ export const SidebatData =  [
         link:"/home"
     },
     {
-        title:"メール",
+        title:"自己紹介",
         icon: <MailIcon/>,
         link:"/mail"
     },
@@ -24,7 +24,7 @@ export const SidebatData =  [
     },
     
     {
-        title:"友達追加",
+        title:"趣味",
         icon: <PersonAddIcon/>,
         link:"/friends"
     },
@@ -34,7 +34,7 @@ export const SidebatData =  [
         link:"/payment"
     },
     {
-        title:"アップロード",
+        title:"ゲーム作品",
         icon: <BackupIcon/>,
         link:"/upload"
     },

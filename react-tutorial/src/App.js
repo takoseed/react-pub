@@ -2,6 +2,9 @@ import './App.css';
 import Sidebar from './components/SiderBar/Sidebar';
 import Header from './components/HomePage/Header';
 import { useState } from 'react';
+import { Route,Routes,Link } from 'react-router-dom';
+import Home from './pages/Home';
+import Mail from './pages/Mail';
 
 function App() {
   const initialValues = {username:"",mailAddress:"",password:""}
@@ -15,65 +18,42 @@ function App() {
     //.log(formValues);
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setFormErrors(validate(formValues))
-    setIsSubmit(true);
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setFormErrors(validate(formValues))
+  //   setIsSubmit(true);
+  // }
 
-  const validate = (values)=> {
-    const errors= {};
-    const regex  = /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/
-    if(!values.username){
-      errors.username = "ユーザ名を入力してください"
-    }
-    if(!values.mailAddress){
-      errors.mailAddress= "メールアドレスを入力してください"
-    }else if(!regex.test(values.mailAddress)){
-      errors.mailAddress= "正しいメールアドレスを入力してください"
-    }
-    if(!values.password){
-      errors.password = "パスワードを入力してください"
-    }else if (values.password.length < 4){
-      errors.password = "4文字以上15文字以下のパスワードを入力してください"
-    }else if (values.password.length > 15){
-      errors.password = "4文字以上15文字以下のパスワードを入力してください"
-    }
-    return errors;
-  }
+  // const validate = (values)=> {
+  //   const errors= {};
+  //   const regex  = /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/
+  //   if(!values.username){
+  //     errors.username = "ユーザ名を入力してください"
+  //   }
+  //   if(!values.mailAddress){
+  //     errors.mailAddress= "メールアドレスを入力してください"
+  //   }else if(!regex.test(values.mailAddress)){
+  //     errors.mailAddress= "正しいメールアドレスを入力してください"
+  //   }
+  //   if(!values.password){
+  //     errors.password = "パスワードを入力してください"
+  //   }else if (values.password.length < 4){
+  //     errors.password = "4文字以上15文字以下のパスワードを入力してください"
+  //   }else if (values.password.length > 15){
+  //     errors.password = "4文字以上15文字以下のパスワードを入力してください"
+  //   }
+  //   return errors;
+  // }
 
   return (
     <div className="App">
-      {/* <Sidebar/> */}
+      <Sidebar/>
+      <Routes>
+        <Route path='/home' element={<Home/>}/>
+        <Route path='/mail' element={<Mail/>}/>
+      </Routes>
       {/* <Header/> */}
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <h1>ログインフォーム</h1>
-        <hr />
-        <div className='uiForm'>
-          <div className='formField'>
-            <label>ユーザ名</label>
-            <input type='text' placeholder='ユーザ名' name='username' onChange={(e) => handleChange(e)}/>
-          </div>
-          <p className='errorMsg'>{formErrors.username}</p>
-          <div className='formField'>
-            <label>メールアドレス</label>
-            <input type='text' placeholder='メールアドレス' name='mailAddress' onChange={(e) => handleChange(e)}/>
-          </div>
-          <p className='errorMsg'>{formErrors.mailAddress}</p>
-          <div className='formField'>
-            <label>パスワード</label>
-            <input type='text' placeholder='パスワード' name='passward' onChange={(e) => handleChange(e)}/>
-          </div>
-          <p className='errorMsg'>{formErrors.password}</p>
-          <button className='submitButton'>ログイン</button>
-          {Object.keys(formErrors).length === 0 && isSubmit && (
-            <div className='msgOK'>ログインに成功しました</div>
-          )}
-        </div>
-      </form>
     </div>
   );
 }
-
-
 export default App;
